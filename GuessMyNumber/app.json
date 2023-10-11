@@ -1,12 +1,11 @@
 {
   "expo": {
-    "name": "CourseGoals",
-    "slug": "CourseGoals",
+    "name": "GuessMyNumber",
+    "slug": "GuessMyNumber",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "backgroundColor": "#1e085a",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
