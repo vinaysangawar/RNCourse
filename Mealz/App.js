@@ -5,11 +5,14 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { Ionicons } from "@expo/vector-icons"
+import { Provider } from "react-redux"
 
 import CategoriesScreen from "./screens/CategoriesScreen"
 import MealzOverviewScreen from "./screens/MealzOverviewScreen"
 import MealDetailScreen from "./screens/MealDetailScreen"
 import FavoritesScreen from "./screens/FavoritesScreen"
+// import FavoritesContextProvider from "./store/context/favorites-context"
+import store from "./store/redux/store"
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -70,17 +73,21 @@ export default function App() {
   return (
     <>
       <StatusBar style='light' />
-      <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator>
-          <Stack.Screen
-            name='Home'
-            component={DrawerNavigator}
-            options={{ headerShown: false, title: "Home" }}
-          />
-          <Stack.Screen name='Overview' component={MealzOverviewScreen} />
-          <Stack.Screen name='Meal Details' component={MealDetailScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      {/* <FavoritesContextProvider> */}
+      <Provider store={store}>
+        <NavigationContainer theme={MyTheme}>
+          <Stack.Navigator>
+            <Stack.Screen
+              name='Home'
+              component={DrawerNavigator}
+              options={{ headerShown: false, title: "Home" }}
+            />
+            <Stack.Screen name='Overview' component={MealzOverviewScreen} />
+            <Stack.Screen name='Meal Details' component={MealDetailScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
+      {/* </FavoritesContextProvider> */}
     </>
   )
 }
