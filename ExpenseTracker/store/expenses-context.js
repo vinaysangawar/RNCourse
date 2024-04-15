@@ -110,7 +110,9 @@ function expensesReducer(state, action) {
       return state.filter((expense) => expense.id !== action.payload)
     case "UPDATE":
       return state.map((expense) =>
-        expense.id === action.payload.id ? action.payload.data : expense
+        expense.id === action.payload.id
+          ? { ...expense, ...action.payload.data }
+          : expense
       )
     default:
       return state
